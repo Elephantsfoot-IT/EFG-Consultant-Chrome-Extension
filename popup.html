@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Token Generator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 0;
+        margin: 0;
+     
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        border-radius: 5px;
+        border: solid lightgrey 1px;
+        outline: none;
+        color: #262626;
+     
+      }
+      input:focus {
+        border-color: #6fbf43; /* Match your button color */
+      }
+      button {
+        width: 100%;
+        padding: 8px;
+        background: #6fbf43;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        border-radius: 5px;
+        transition: background-color 0.2s ease;
+      }
+      button:hover {
+          background: #5ca438; /* Darker shade of the original color */
+      }
+
+      button:disabled {
+          background: #cccccc;
+          cursor: not-allowed;
+          opacity: 0.7;
+      }
+      .content {
+        width: 400px;
+        height: fit-content;
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .spin {
+        animation: spin 1s linear infinite;
+        display: inline-block;
+    }
+
+    button svg {
+        vertical-align: middle;
+        margin-right: 4px;
+    }
+      
+    </style>
+    
+  </head>
+  <body>
+    <div class="content">
+        <!-- Header -->
+        <div  style="display: flex; flex-direction: row; gap: 10px; align-items: flex-start;">
+            <img src="./assets/ef-consulting-logomark.svg" 
+                 alt="logo" 
+                 width="50" 
+                 height="50" 
+                 style="cursor: pointer;" />
+                 <div>
+                    <p style="margin: 0; font-size: large; font-weight: 600; color:#262626;  ;">Online Quote Form</p>
+                    <p style="margin: 0; font-size: small; font-weight: 300; color:#737373;  ;">Generate a one-time use token and a secure URL for the online quote form.</p>
+                 </div>
+        </div>
+        <!-- Form -->
+        <hr style="border: dashed lightgrey 0.5px; margin-top: 15px; margin-bottom: 15px;"></hr>
+        <!-- Quote ID input -->
+        <div style="display:flex; flex-direction: row; gap: 10px; width: 100%;">
+          <input type="text" id="quoteId" placeholder="Enter Quote ID" />
+          <button id="generate" style="width: 100px">Get URL</button>
+        </div>
+        <!-- Error Display -->
+        <div id="error-container" style="display: none; color: #dc2626; margin-top: 8px;">
+          <p id="error-message" style="margin: 0; font-size: small;"></p>
+      </div>
+
+        <!-- Generated URL -->
+        <div id="result-container" style="display: flex; flex-direction: row; margin-top: 15px;">
+          <input id="result" placeholder="URL appears here" style="border-bottom-right-radius: 0; border-top-right-radius: 0; width: 90%;"></input>
+          <button id="copy" style="border-radius: 0; width: 10%; border-top-right-radius: 5px; border-bottom-right-radius: 5px;" >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 8.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v8.25A2.25 2.25 0 0 0 6 16.5h2.25m8.25-8.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-7.5A2.25 2.25 0 0 1 8.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 0 0-2.25 2.25v6" />
+              </svg>
+              
+          </button>
+        </div>
+    </div>
+    
+    <script src="popup.js"></script>
+  </body>
+</html>
