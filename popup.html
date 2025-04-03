@@ -9,7 +9,7 @@
         font-family: Arial, sans-serif;
         padding: 0;
         margin: 0;
-     
+
       }
       input {
         width: 100%;
@@ -23,6 +23,7 @@
       input:focus {
         border-color: #6fbf43; /* Match your button color */
       }
+
       button {
         width: 100%;
         padding: 8px;
@@ -88,10 +89,12 @@
         </div>
         <!-- Form -->
         <hr style="border: dashed lightgrey 0.5px; margin-top: 15px; margin-bottom: 15px;"></hr>
+        <h3>Exact Quote Form</h3>
         <!-- Quote ID input -->
         <div style="display:flex; flex-direction: row; gap: 10px; width: 100%;">
-          <input type="text" id="quoteId" placeholder="Enter Quote ID" />
-          <button id="generate" style="width: 100px">Get URL</button>
+          <input type="text" id="quoteId" placeholder="Enter Quote ID"  style="width: 30%;"/>
+          <button id="generate" style="width: 30%">Exact Quote</button>
+          <button id="generate-full" style="width: 30%; background-color: #1b2741; ">Full Quote</button>
         </div>
         <!-- Error Display -->
         <div id="error-container" style="display: none; color: #dc2626; margin-top: 8px;">
@@ -108,6 +111,8 @@
               
           </button>
         </div>
+
+        
     </div>
     
     <script src="popup.js"></script>
