@@ -5,13 +5,10 @@
   "description": "Enter a Quote ID, get a URL.",
   "permissions": [
     "clipboardWrite",
-    "tabs",
-    "scripting", 
-    "activeTab"
+    "tabs"
   ],
   "host_permissions": [
-    "https://elephantsfoot-consultant-online-quote-form.vercel.app/*",
-    "<all_urls>"
+    "https://elephantsfoot-consultant-online-quote-form.vercel.app/*"
   ],
   "icons": {
     "16": "logo.png",
