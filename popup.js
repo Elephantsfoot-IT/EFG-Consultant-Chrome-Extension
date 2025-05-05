@@ -63,7 +63,7 @@ generateButton.addEventListener('click', async () => {
 
     try {
         // Send PUT request to your API endpoint with the scoro_quote_id
-        const response = await fetch('https://main.d30rkd30bpaa0w.amplifyapp.com/api/create-url', {
+        const response = await fetch('https://efconsulting.com.au/api/create-url', {
             method: 'PUT',
             mode: 'cors',  // Add this line
             credentials: 'omit',  // Add this line
@@ -126,7 +126,7 @@ generateFullButton.addEventListener('click', async () => {
 
     try {
         // Send PUT request to your API endpoint with the scoro_quote_id
-        const response = await fetch('https://main.d30rkd30bpaa0w.amplifyapp.com/api/create-full-form', {
+        const response = await fetch('https://efconsulting.com.au/api/create-full-form', {
             method: 'PUT',
             mode: 'cors',  // Add this line
             credentials: 'omit',  // Add this line

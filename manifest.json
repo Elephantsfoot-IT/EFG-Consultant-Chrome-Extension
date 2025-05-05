@@ -1,14 +1,14 @@
 {
   "manifest_version": 3,
   "name": "API Token Generator",
-  "version": "1.1",
+  "version": "1.2",
   "description": "Enter a Quote ID, get a URL.",
   "permissions": [
     "clipboardWrite",
     "tabs"
   ],
   "host_permissions": [
-    "https://elephantsfoot-consultant-online-quote-form.vercel.app/*"
+    "https://efconsulting.com.au/api/*"
   ],
   "icons": {
     "16": "logo.png",
