@@ -5,6 +5,32 @@ const generateFullButton = document.getElementById('generate-full');
 const resultElement = document.getElementById('result');
 const copyButton = document.getElementById('copy');
 
+async function getUserEmail() {
+    return new Promise((resolve, reject) => {
+        chrome.identity.getAuthToken({ interactive: true }, (token) => {
+            if (chrome.runtime.lastError || !token) {
+                console.error('Auth token error:', chrome.runtime.lastError?.message);
+                resolve(null);
+                return;
+            }
+
+            fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                .then((res) => res.json())
+                .then((data) => {
+                    resolve(data.email || null);
+                })
+                .catch((err) => {
+                    console.error('Fetch error:', err);
+                    resolve(null);
+                });
+        });
+    });
+}
+
 
 /// HELPER FUNCTIONS
 function extractQuoteId(url) {
@@ -42,7 +68,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 generateButton.addEventListener('click', async () => {
     const quoteId = quoteIdInput.value.trim();
     if (!quoteId) {
-        showError('Please enter a Quote ID')
+        showError('Please go to the Scoro quote page and click the extension icon to auto-fill the Quote ID')
         return;
     }
     else{
@@ -63,6 +89,13 @@ generateButton.addEventListener('click', async () => {
 
     try {
         // Send PUT request to your API endpoint with the scoro_quote_id
+        const email = await getUserEmail();
+        if (!email) {
+            showError('Failed to retrieve email address.');
+            generateFullButton.innerHTML = originalContent;
+            generateFullButton.disabled = false;
+            return;
+        }
         const response = await fetch('https://efconsulting.com.au/api/create-url', {
             method: 'PUT',
             mode: 'cors',  // Add this line
@@ -73,6 +106,7 @@ generateButton.addEventListener('click', async () => {
             },
             body: JSON.stringify({
                 scoro_quote_id: quoteId,
+                email:email
             }),
         });
 
@@ -101,11 +135,10 @@ generateButton.addEventListener('click', async () => {
 });
 
 
-
 generateFullButton.addEventListener('click', async () => {
     const quoteId = quoteIdInput.value.trim();
     if (!quoteId) {
-        showError('Please enter a Quote ID')
+        showError('Please go to the Scoro quote page and click the extension icon to auto-fill the Quote ID')
         return;
     }
     else{
@@ -125,6 +158,13 @@ generateFullButton.addEventListener('click', async () => {
 
 
     try {
+        const email = await getUserEmail();
+        if (!email) {
+            showError('Failed to retrieve email address.');
+            generateFullButton.innerHTML = originalContent;
+            generateFullButton.disabled = false;
+            return;
+        }
         // Send PUT request to your API endpoint with the scoro_quote_id
         const response = await fetch('https://efconsulting.com.au/api/create-full-form', {
             method: 'PUT',
@@ -136,6 +176,7 @@ generateFullButton.addEventListener('click', async () => {
             },
             body: JSON.stringify({
                 scoro_quote_id: quoteId,
+                email: email
             }),
         });
 
