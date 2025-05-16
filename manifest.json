@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "API Token Generator",
-  "version": "1.3",
+  "version": "1.4",
   "description": "Enter a Quote ID, get a URL.",
   "permissions": [
     "clipboardWrite",
@@ -14,7 +14,7 @@
     "https://www.googleapis.com/*"
   ],
   "oauth2": {
-    "client_id": "1014593355543-v0j80ea95k959on3sjjfgggpk11o4qtn.apps.googleusercontent.com",
+    "client_id": "1014593355543-okursn5g2jabio1i8va2h812mbqt6mka.apps.googleusercontent.com",
     "scopes": ["email", "profile"]
   },
   "icons": {
